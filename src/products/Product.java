@@ -1,29 +1,50 @@
 package products;
 
 public class Product {
-	private int id;
 	private String name;
-	private Categories category;
+	private Category category;
 	private float price;
 	private UnitType unit;
-	private int qty;
-	private String imgLink;
 	
-	public Product(int id, String name, Categories category, float price, UnitType unit, int qty, String imgLink) {
-		this.id = id;
+	public Product(String name, Category category, float price, UnitType unit) {
 		this.name = name;
 		this.category = category;
 		this.price = price;
 		this.unit = unit;
-		this.qty = qty;
-		this.imgLink = imgLink;
+		
+		validate();
 	}
 	
-	public Product(int id, String name, float price, UnitType unit, int qty, String imgLink) {
-		this(id, name, Categories.MISC, price, unit, qty, imgLink);
+//	Alternative constructors
+	public Product(String name, float price, UnitType unit) {
+		this(name, Category.MISC, price, unit);
+	}
+	public Product(String name, Category category, float price) {
+		this(name, category, price, UnitType.PIECE);
 	}
 	
-	public Product(int id, String name, float price, UnitType unit, int qty) {
-		this(id, name, Categories.MISC, price, unit, qty, null);
+	public Product(String name, float price) {
+		this(name, Category.MISC, price, UnitType.PIECE);
 	}
+
+	//	No negative prices allowed
+	private void validate() {
+		if (price <= 0) price = 0;
+		if (unit == null) unit = UnitType.PIECE;
+	}
+	public void print() {
+		System.out.println("Name: " + name);
+		System.out.println("Category: " + category);
+		System.out.println("Price: " + price);
+		System.out.println("Unit type: " + unit);
+	}
+//	getters
+	public String getName() { return name; }
+	public Category getCategory() { return category; }
+	public float getPrice() { return price; }
+	public UnitType getUnit() { return unit; }
+	
+//	setters
+	public void setName(String newName) { name = newName; }
+	public void setPrice(float newPrice) { price = newPrice; }
 }

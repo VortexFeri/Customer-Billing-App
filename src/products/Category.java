@@ -1,6 +1,6 @@
 package products;
 
-public enum Categories {
+public enum Category {
 	MISC,
 	FRUITS,
 	VEGETABLES,
