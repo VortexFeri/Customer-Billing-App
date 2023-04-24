@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author feric
+ *
+ */
+module CustomerBillingApp {
+}
