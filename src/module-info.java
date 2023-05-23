@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author feric
- *
- */
-module CustomerBillingApp {
-}

@@ -1,13 +1,10 @@
 package stock_logic;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
 import products.Category;
 import products.Product;
 import products.UnitType;
+
+import java.util.ArrayList;
 
 public class Inventory {
 	private Category category;
@@ -25,6 +22,7 @@ public class Inventory {
 //		if the item already exists add the stock up
 		if (alreadyHasProduct(product)) {
 			setStock(product, getStock(product)+qty);
+
 			return;
 		}
 		InventoryItem item = new InventoryItem(product.getName(), product.getCategory(), product.getPrice(), product.getUnit(), qty);
@@ -64,8 +62,7 @@ public class Inventory {
 		return products.get(id);
 	}
 	public boolean alreadyHasProduct(Product product) {
-		if (getId(product) == -1) return false;
-		return true;
+		return getId(product) != -1;
 	}
 	public void print() {
 		for (InventoryItem item : products) {

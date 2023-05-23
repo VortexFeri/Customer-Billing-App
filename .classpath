@@ -6,5 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/mongodb.driver.sync"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/json"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

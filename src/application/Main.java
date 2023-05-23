@@ -1,27 +1,24 @@
 package application;
 
-import products.Category;
-import products.Product;
-import products.UnitType;
-import stock_logic.Inventory;
-
+import db.db;
 public class Main {
 
-	public static void main(String[] args) {
-		Inventory fruits = new Inventory(Category.FRUITS);
-		
-		Product apple = new Product("Apple", Category.FRUITS, 0.99f, UnitType.KG);
-		Product orange = new Product("Orange", 1.29f);
-		
-		fruits.addProduct(apple);
-		fruits.addProduct(orange);
-//		fruits.setStock(orange, 4);
-		fruits.addProduct(apple,2);
-		fruits.addProduct("Pineapple", 0.29f, UnitType.KG);
-		fruits.addProduct(apple);
-		fruits.setStock(orange, 5);
-		
-		fruits.print();
-	}
+	//TODO add a menu
+	//TODO add a way to save the inventory
+	//TODO add a way to load the inventory
+	//TODO VAT and total price
+	//TODO company saving system
+	//TODO connect to a database
+	//TODO user system
+	//TODO search by name
+	//TODO receipt system
 
+	//connecting to database
+	//https://www.youtube.com/watch?v=akW6bzoRcZo
+
+	public static void main(String[] args) {
+		//login to the database
+		db.login("user_1", "password_test");
+		db.selectDatabase("inventory");
+	}
 }

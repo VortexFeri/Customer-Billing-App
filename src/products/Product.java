@@ -2,17 +2,15 @@ package products;
 
 public class Product {
 	private String name;
-	private Category category;
+	private final Category category;
 	private float price;
-	private UnitType unit;
-	
+	private final UnitType unit;
+
 	public Product(String name, Category category, float price, UnitType unit) {
 		this.name = name;
 		this.category = category;
 		this.price = price;
 		this.unit = unit;
-		
-		validate();
 	}
 	
 //	Alternative constructors
@@ -27,11 +25,6 @@ public class Product {
 		this(name, Category.MISC, price, UnitType.PIECE);
 	}
 
-	//	No negative prices allowed
-	private void validate() {
-		if (price <= 0) price = 0;
-		if (unit == null) unit = UnitType.PIECE;
-	}
 	public void print() {
 		System.out.println("Name: " + name);
 		System.out.println("Category: " + category);
@@ -47,4 +40,5 @@ public class Product {
 //	setters
 	public void setName(String newName) { name = newName; }
 	public void setPrice(float newPrice) { price = newPrice; }
+
 }
