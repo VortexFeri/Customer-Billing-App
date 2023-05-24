@@ -1,11 +1,12 @@
 package application;
 
 import stock_logic.Inventory;
+import stock_logic.InventoryItem;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-import static db.db.*;
+import static db.db.login;
+import static stock_logic.actions.sell;
 
 public class Main {
 
@@ -25,19 +26,14 @@ public class Main {
 	public static void main(String[] args) {
 		//login to the database
 		login("user_1", "password_test");
+		ArrayList<Inventory> fullInventory = Inventory.loadAll();
 
-		ArrayList<Inventory> inventories = new ArrayList<>();
-		if (getDatabaseNames() != null)
-			for(String name : Objects.requireNonNull(getDatabaseNames())) {
-				if (name.equals("admin") || name.equals("local")) continue;
-				selectDatabase(name);
-				for (String collectionName : Objects.requireNonNull(database.listCollectionNames().into(new ArrayList<>()))) {
-					Inventory inventory = new Inventory();
-					inventory.initFromCollection(getCollectionFromDatabase(collectionName));
-					inventories.add(inventory);
-					inventory.print();
-					System.out.println("\n");
-				}
-			}
+		assert fullInventory != null;
+		for(Inventory inventory : fullInventory) {
+			inventory.print();
+			System.out.println("\n");
+		}
+		InventoryItem item = fullInventory.get(0).getItemAtId(0);
+		sell(fullInventory.get(0), item, 2);
 	}
 }

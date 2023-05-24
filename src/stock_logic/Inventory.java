@@ -2,17 +2,36 @@ package stock_logic;
 
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
+import org.jetbrains.annotations.Nullable;
 import products.Category;
 import products.Product;
 import products.UnitType;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
+import static db.db.*;
+import static db.db.getCollectionFromDatabase;
 import static utils.macros.log;
 
 public class Inventory {
 	private Category category;
 	protected ArrayList<InventoryItem> items;
+	public static @Nullable ArrayList<Inventory> loadAll() {
+		if (getDatabaseNames() == null)
+			return null;
+		ArrayList<Inventory> inventories = new ArrayList<>();
+		for(String name : Objects.requireNonNull(getDatabaseNames())) {
+			if (name.equals("admin") || name.equals("local")) continue;
+			selectDatabase(name);
+			for (String collectionName : Objects.requireNonNull(database.listCollectionNames().into(new ArrayList<>()))) {
+				Inventory inventory = new Inventory();
+				inventory.initFromCollection(getCollectionFromDatabase(collectionName));
+				inventories.add(inventory);
+			}
+		}
+		return inventories;
+	}
 
 	public boolean initFromCollection(MongoCollection<Document> coll) {
 		if (coll == null) {
@@ -90,6 +109,9 @@ public class Inventory {
 		       id++;
 		     }
 	     return -1;
+	}
+	public Category getCategory() {
+		return category;
 	}
 	public InventoryItem getItemAtId(int id) {
 		return items.get(id);

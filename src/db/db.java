@@ -23,6 +23,18 @@ public class db  {
     public static Vector<MongoCollection<Document>> localCollections = new Vector<>();
     public static MongoClient mongoClient;
 
+    public static boolean isOpen() {
+        if (!loggedIn) {
+            log("Error: You are not logged in!");
+            return false;
+        }
+        if (database == null) {
+            log("Error: You have not selected a database!");
+            return false;
+        }
+        return true;
+    }
+
     public static boolean login(String username, String password) {
         String uri = "mongodb+srv://" + username + ":" + password + "@inventory0.p0d4fuf.mongodb.net/?retryWrites=true&w=majority";
 
@@ -34,18 +46,18 @@ public class db  {
                 // Send a ping to confirm a successful connection
                 Bson command = new BsonDocument("ping", new BsonInt64(1));
                 Document commandResult = database.runCommand(command);
-                System.out.println("Pinged your deployment. You successfully connected to MongoDB!");
+                log("Pinged your deployment. You successfully connected to MongoDB!");
             } catch (MongoException e) {
                 log(e.toString());
                 return false;
             }
         }
-        catch (Exception e) {
+        catch (MongoException e) {
             log("Error: " + e);
             return false;
         }
         loggedIn = true;
-        log("Logged in successfully!");
+        log("Logged in successfully as: " + username);
         return true;
     }
 
@@ -53,10 +65,6 @@ public class db  {
     public static ArrayList<String> getDatabaseNames() {
         if (!loggedIn) {
             log("Error: You are not logged in!");
-            return null;
-        }
-        if (mongoClient == null) {
-            log("Error: Database is null!");
             return null;
         }
         return mongoClient.listDatabaseNames().into(new ArrayList<>());
@@ -84,14 +92,8 @@ public class db  {
     }
 
     public static boolean storeCollections() {
-        if (!loggedIn) {
-            log("Error: You are not logged in!");
+        if (!isOpen())
             return false;
-        }
-        if (database == null) {
-            log("Error: You have not selected a database!");
-            return false;
-        }
         try {
             for (String name : database.listCollectionNames()) {
                 localCollections.add(database.getCollection(name));
@@ -130,14 +132,8 @@ public class db  {
     }
 
     public static void printCollectionFromDatabase(String name) {
-        if (!loggedIn) {
-            log("Error: You are not logged in!");
+        if (!isOpen())
             return;
-        }
-        if (database == null) {
-            log("Error: You have not selected a database!");
-            return;
-        }
         boolean found_anything = false;
         for (String collection_name : database.listCollectionNames())
             if (collection_name.equals(name)) {
@@ -150,23 +146,41 @@ public class db  {
             log("Error: Could not find collection: " + name);
     }
 
-    public static MongoCollection<Document> getCollectionFromDatabase(String fruits) {
-        if (!loggedIn) {
-            log("Error: You are not logged in!");
+    public static MongoCollection<Document> getCollectionFromDatabase(String name) {
+        if (!isOpen())
             return null;
-        }
-        if (database == null) {
-            log("Error: You have not selected a database!");
-            return null;
-        }
         boolean found_anything = false;
         for (String collection_name : database.listCollectionNames())
-            if (collection_name.equals(fruits)) {
-                log("Found " + fruits + " collection");
+            if (collection_name.equals(name)) {
+                log("Found \"" + name + "\" collection " + "in database \"" + database.getName() + "\" (containing " + database.getCollection(name).countDocuments() + " entries)");
                 found_anything = true;
-                return database.getCollection(fruits);
+                return database.getCollection(name);
             }
-        log("Error: Could not find collection: " + fruits);
+        log("Error: Could not find collection: " + name);
         return null;
+    }
+
+    public static void addCollection(String name) {
+        try {
+            database.createCollection(name);
+        } catch (Exception e) {
+            log("Error: " + e);
+            return;
+        }
+        log("Created collection: " + name);
+    }
+    public static void addItemToCollection(String collection_name, Document document) {
+        if (!isOpen())
+            return;
+        if (getCollectionFromDatabase(collection_name) == null) {
+            log("Error: Could not find collection: " + collection_name);
+            return;
+        }
+        try {
+            database.getCollection(collection_name).insertOne(document);
+        } catch (Exception e) {
+            log("Error: " + e);
+            return;
+        }
     }
 }

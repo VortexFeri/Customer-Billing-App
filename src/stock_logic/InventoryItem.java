@@ -7,7 +7,7 @@ import products.UnitType;
 import java.util.Objects;
 
 public class InventoryItem extends Inventory {
-	private String id;
+	private final String id;
 	private Product product;
 	private int stock;
 	
