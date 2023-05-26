@@ -1,46 +1,35 @@
 package stock_logic;
 
+import org.jetbrains.annotations.NotNull;
 import products.Category;
 import products.Product;
 import products.UnitType;
 
+import java.sql.ResultSet;
 import java.util.Objects;
+import java.util.logging.Logger;
 
-public class InventoryItem extends Inventory {
-	private final String id;
-	private Product product;
+import static utils.macros.log;
+
+public class InventoryItem extends Product {
+	protected String image_url;
 	private int stock;
-	
-	public InventoryItem(String name, Category category, float price, UnitType unit, int qty, String id) {
-		product = new Product(name, category, price, unit);
-		stock = qty;
-		this.id = id == null ? String.valueOf(this.hashCode()) : id;
+	private final int id;
+
+	public InventoryItem() {
+		super("Unknown", Category.OTHER, 0, UnitType.PIECE);
+		this.stock = 0;
+		this.id = -1;
 	}
 
-	public InventoryItem(String name, Category category, float price, UnitType unit, int qty) {
-		this(name, category, price, unit, qty, null);
+	public InventoryItem(int id, @NotNull Product product, int stock) {
+		super(product.getName(), product.getCategory(), product.getPrice(), product.getUnit());
+		this.stock = stock;
+		this.id = id;
 	}
-
-	public InventoryItem(Product product, Integer stock, String id) {
-		this(product.getName(), product.getCategory(), product.getPrice(), product.getUnit(), stock, id);
+	public InventoryItem(int id, @NotNull Product product) {
+		this(id, product, 0);
 	}
-
-	public InventoryItem(Product product, Integer stock) {
-		this(product, stock, null);
-	}
-
-	//	getters
-	public String getName() { return product.getName(); }
-	public Category getCategory() { return product.getCategory(); }
-	public float getPrice() { return product.getPrice(); }
-	public UnitType getUnit() { return product.getUnit(); }
-	public int getStock() { return stock; }
-	public String getId() { return id; }
-	public Product getProduct() { return product; }
-//	setters
-	public void setName(String newName) { product.setName(newName); }
-	public void setPrice(float newPrice) { product.setPrice(newPrice); }
-	public void setStock(int newQty) { stock = newQty; }
 
 	public boolean equalsProduct(Product product) {
 		return Objects.equals(product.getName(), this.getName()) &&
@@ -49,8 +38,52 @@ public class InventoryItem extends Inventory {
 				product.getPrice() == this.getPrice();
 	}
 	public void print() {
-		System.out.println("----------" + "ID = " + id + "----------");
+		System.out.println("ID: " + id);
 		System.out.println("Stock left: " + stock);
-		product.print();
+		super.print();
 	}
+
+	public static InventoryList loadFromResultSet(ResultSet resultSet) {
+		if (resultSet == null) {
+			log("Error: ResultSet is null!");
+			return null;
+		}
+		try {
+			InventoryList inv = new InventoryList();
+			while (resultSet.next()) {
+				Category cat;
+				UnitType unit;
+				try {
+					cat = Category.valueOf(resultSet.getString("category").toUpperCase());
+				} catch (IllegalArgumentException e) {
+					log("Error: Invalid category! (Defaulting to OTHER)");
+					cat = Category.OTHER;
+				}
+				try {
+					unit = UnitType.valueOf(resultSet.getString("unit_type").toUpperCase());
+				} catch (IllegalArgumentException e) {
+					log("Error: Invalid unit! (Defaulting to PIECE)");
+					unit = UnitType.PIECE;
+				}
+				Product product = new Product(resultSet.getString("name"), cat, resultSet.getFloat("price"), unit);
+				inv.add(new InventoryItem(resultSet.getInt("id"), product, resultSet.getInt("stock")));
+			}
+			return inv;
+		} catch (Exception e) {
+			Logger.getLogger(InventoryItem.class.toString()).severe(e.getMessage());
+			log("Error: ResultSet is invalid!");
+			return null;
+		}
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	//setters
+	public void setStock(int newStock) { stock = newStock; }
+	public void setImage_url(String image_url) { this.image_url = image_url; }
+	//getters
+	public int getStock() { return stock; }
+	public String getImage_url() { return image_url; }
 }

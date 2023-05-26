@@ -1,12 +1,12 @@
 package application;
 
-import stock_logic.Inventory;
 import stock_logic.InventoryItem;
+import stock_logic.InventoryList;
 
-import java.util.ArrayList;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-import static db.db.login;
-import static stock_logic.actions.sell;
+import static db.db.*;
 
 public class Main {
 
@@ -23,17 +23,24 @@ public class Main {
 	//connecting to database
 	//https://www.youtube.com/watch?v=akW6bzoRcZo
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		//login to the database
-		login("user_1", "password_test");
-		ArrayList<Inventory> fullInventory = Inventory.loadAll();
+		connect("jdbc:mysql://localhost:3306/uni_project","user_1", "password_test");
 
-		assert fullInventory != null;
-		for(Inventory inventory : fullInventory) {
-			inventory.print();
-			System.out.println("\n");
-		}
-		InventoryItem item = fullInventory.get(0).getItemAtId(0);
-		sell(fullInventory.get(0), item, 2);
+		InventoryList inv;
+		ResultSet products = getTable("products");
+		inv = InventoryItem.loadFromResultSet(products);
+		assert inv != null;
+		inv.forEach((i) -> {
+			i.print();
+			System.out.println();
+		});
+		updateOne("products", 10, "stock", "1");
+		InventoryList updated = InventoryItem.loadFromResultSet(getTable("products"));
+		assert updated != null;
+		updated.forEach((i) -> {
+			i.print();
+			System.out.println();
+		});
 	}
 }

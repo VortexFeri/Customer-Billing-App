@@ -1,15 +1,14 @@
 package products;
 
 public enum Category {
-	MISC("Miscellaneous"),
-	FRUITS("Fruits"),
-	VEGETABLES("Vegetables"),
+	OTHER("Other"),
+	FRUITS("Fruit"),
+	VEGETABLE("Vegetable"),
 	MEAT("Meat"),
-	DAIRY("Dairy"),
-	COSMETICS("Cosmetics");
+	DAIRY("Dairy");
 
-	private String name;
-	private Category(String name) {
+	private final String name;
+	Category(String name) {
 		this.name = name;
 	}
 

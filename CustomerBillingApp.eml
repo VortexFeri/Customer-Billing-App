@@ -2,7 +2,6 @@
 <component jdk="JavaSE-17" jdk_type="JavaSDK">
 	<contentEntry url="file://$MODULE_DIR$"/>
 	<levels>
-		<level name="mongodb.driver.sync" value="project"/>
-		<level name="json" value="project"/>
+		<level name="mysql.connector.j" value="project"/>
 	</levels>
 </component>

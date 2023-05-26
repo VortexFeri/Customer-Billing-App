@@ -1,9 +1,9 @@
 package products;
 
 public class Product {
-	private String name;
+	private final String name;
 	private final Category category;
-	private float price;
+	private final float price;
 	private final UnitType unit;
 
 	public Product(String name, Category category, float price, UnitType unit) {
@@ -15,14 +15,14 @@ public class Product {
 	
 //	Alternative constructors
 	public Product(String name, float price, UnitType unit) {
-		this(name, Category.MISC, price, unit);
+		this(name, Category.OTHER, price, unit);
 	}
 	public Product(String name, Category category, float price) {
 		this(name, category, price, UnitType.PIECE);
 	}
 	
 	public Product(String name, float price) {
-		this(name, Category.MISC, price, UnitType.PIECE);
+		this(name, Category.OTHER, price, UnitType.PIECE);
 	}
 
 	public void print() {
@@ -36,9 +36,4 @@ public class Product {
 	public Category getCategory() { return category; }
 	public float getPrice() { return price; }
 	public UnitType getUnit() { return unit; }
-	
-//	setters
-	public void setName(String newName) { name = newName; }
-	public void setPrice(float newPrice) { price = newPrice; }
-
 }
