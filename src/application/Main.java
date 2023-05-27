@@ -1,14 +1,13 @@
 package application;
 
-import stock_logic.InventoryItem;
-import stock_logic.InventoryList;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.Objects;
 
-import static db.db.*;
-
-public class Main {
+public class Main extends Application {
 
 	//TODO add a menu
 	//TODO add a way to save the inventory
@@ -23,24 +22,40 @@ public class Main {
 	//connecting to database
 	//https://www.youtube.com/watch?v=akW6bzoRcZo
 
-	public static void main(String[] args) throws SQLException {
-		//login to the database
-		connect("jdbc:mysql://localhost:3306/uni_project","user_1", "password_test");
+	private static Stage stg;
+	public static void main(String[] args) {
+//		connect("jdbc:mysql://localhost:3306/uni_project","user_1", "password_test");
+//
+//		InventoryList inv;
+//		ResultSet products = getTable("products");
+//		inv = InventoryItem.loadFromResultSet(products);
+//		assert inv != null;
+//		inv.forEach((i) -> {
+//			i.print();
+//			System.out.println();
+//		});
 
-		InventoryList inv;
-		ResultSet products = getTable("products");
-		inv = InventoryItem.loadFromResultSet(products);
-		assert inv != null;
-		inv.forEach((i) -> {
-			i.print();
-			System.out.println();
-		});
-		updateOne("products", 10, "stock", "1");
-		InventoryList updated = InventoryItem.loadFromResultSet(getTable("products"));
-		assert updated != null;
-		updated.forEach((i) -> {
-			i.print();
-			System.out.println();
-		});
+		launch(args);
+	}
+
+	@Override
+	public void start(Stage stage) throws Exception {
+		stg = stage;
+		stage.setResizable(false);
+		Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../gui/login.fxml")));
+		stage.setTitle("Log in");
+		stage.setScene(new javafx.scene.Scene(root, 600, 300));
+		stage.show();
+	}
+
+	public void loadHome() {
+		try {
+			Parent pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../gui/main.fxml")));
+			stg.setScene(new javafx.scene.Scene(pane, 900, 600));
+			stg.setResizable(true);
+			stg.setTitle("Home");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

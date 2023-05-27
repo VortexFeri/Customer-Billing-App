@@ -18,13 +18,13 @@ public class db {
         return true;
     }
 
-    public static void connect(String url, String username, String password) {
+    public static void connect(String url, String username, String password) throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, username, password);
             loggedIn = true;
             log("Logged in successfully as: " + username);
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             Logger.getLogger(db.class.getName()).severe(e.toString());
         }
     }
