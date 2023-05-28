@@ -65,7 +65,7 @@ public class MainView {
         AnchorPane.setBottomAnchor(billView, 0d);
         AnchorPane.setLeftAnchor(categoryButtons, 0d);
         AnchorPane.setTopAnchor(categoryButtons, 0d);
-        root.setLeft(categoryButtons);
+//        root.setLeft(categoryButtons);
         root.setCenter(productsView);
         root.setRight(billView);
         return root;

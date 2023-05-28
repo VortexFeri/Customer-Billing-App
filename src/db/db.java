@@ -3,7 +3,7 @@ package db;
 import java.sql.*;
 import java.util.logging.Logger;
 
-import static utils.macros.log;
+import static application.utils.log;
 
 
 public class db {

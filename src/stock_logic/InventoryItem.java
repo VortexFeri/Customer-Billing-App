@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.util.Objects;
 import java.util.logging.Logger;
 
-import static utils.macros.log;
+import static application.utils.log;
 
 public class InventoryItem extends Product {
 	protected String image_url;

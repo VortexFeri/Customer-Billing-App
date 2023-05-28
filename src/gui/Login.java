@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static db.db.*;
+import static gui.Inventory_display.showProducts;
 import static stock_logic.InventoryItem.fullInv;
 
 public class Login {
@@ -40,6 +41,7 @@ public class Login {
             ResultSet products = getTable("products");
             fullInv = InventoryItem.loadFromResultSet(products);
             m.loadHome();
+            showProducts(fullInv);
         }
     }
 }
