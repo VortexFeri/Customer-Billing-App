@@ -16,6 +16,8 @@ public class InventoryItem extends Product {
 	private int stock;
 	private final int id;
 
+	public static InventoryList fullInv = new InventoryList();
+
 	public InventoryItem() {
 		super("Unknown", Category.OTHER, 0, UnitType.PIECE);
 		this.stock = 0;
