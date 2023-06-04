@@ -14,8 +14,9 @@ You can filter the products by category or search for a specific product by name
 ## Installation
 
 Unfortunately, Microsoft Azure does not allow me to share the database connection
-information, so you will have to create your own database and change the connection
-information in the ```userLogin()``` method in ```src/gui/Login.java``` file to 
+information (it would require me to add each IP to the whitelist), so you will have
+to create your own database and change the connection information in the 
+```userLogin()``` method in ```src/gui/Login.java``` file to 
 connect to your database. You will also have to create a table called ```product```
 and populate it with some data. The table should have the following columns:
 
@@ -33,6 +34,26 @@ from your database. You can then select some products from a list and
 add them to your cart. You can also remove products from your cart or
 change the quantity of the products in your cart. When you are done
 selecting products, you can click the ```Checkout``` button to see.
+
+Images are loaded from the ```src/assets``` folder. You can add your own
+images to the folder and name them using the exact same name as the
+product name in the database. The app will then load the image from the
+folder and display it in the list. If the image is not found, the app
+will try to download it from the internet and save, using the link from the
+```assets/image-links.json``` file. If the image is not found there
+either, the app will display a default image.
+You can add your own links to the ```image-links.json``` file, using the following
+format:
+
+```json
+{
+    "name": "link"
+}
+```
+
+### Note:
+```name``` is the exact name of the product in the database and ```link``` is the
+link to the image. (don't forget to add a comma after the previous entry)
 
 ## Interface
 
