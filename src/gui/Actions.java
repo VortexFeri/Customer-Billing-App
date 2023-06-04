@@ -18,8 +18,8 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static db.db.getTable;
-import static gui.ProductCard.showProducts;
 import static gui.MainView.*;
+import static gui.ProductCard.showProducts;
 import static stock_logic.InventoryItem.fullInv;
 
 public class Actions {

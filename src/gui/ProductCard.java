@@ -4,7 +4,10 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import products.UnitType;
@@ -12,16 +15,14 @@ import stock_logic.InventoryItem;
 import stock_logic.InventoryList;
 
 import javax.imageio.ImageIO;
-
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileReader;
 
+import static application.utils.log;
 import static application.utils.toTitleCase;
 import static gui.MainView.productsView;
-import static application.utils.log;
 
 public class ProductCard {
 
