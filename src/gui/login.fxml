@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.PasswordField?>
 <StackPane prefHeight="362.0" prefWidth="396.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Login">
    <children>
       <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="396.0">
@@ -21,7 +22,7 @@
          </rowConstraints>
          <children>
             <TextField id="password_field" fx:id="username_field" promptText="username" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-            <TextField id="password_field" fx:id="password_field" promptText="password" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <PasswordField id="password_field" fx:id="password_field" promptText="password" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <Button fx:id="submit" defaultButton="true" mnemonicParsing="false" onAction="#userLogin" prefHeight="37.0" prefWidth="106.0" text="Log in" textFill="#333333" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <font>
                   <Font size="18.0" />

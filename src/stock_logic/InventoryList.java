@@ -17,10 +17,10 @@ public class InventoryList extends ArrayList<InventoryItem> {
     public InventoryList clone() {
         return (InventoryList) super.clone();
     }
-    public InventoryList filterByName(String name) {
+    public InventoryList searchByName(String name) {
         InventoryList inv = new InventoryList();
         for (InventoryItem i : this) {
-            if (i.getName().contains(name)) {
+            if (i.getName().toLowerCase().contains(name.toLowerCase())) {
                 inv.add(i);
             }
         }

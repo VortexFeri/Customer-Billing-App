@@ -1,7 +1,7 @@
 package products;
 
 public enum UnitType {
-	PIECE("piece"),
+	PCS("piece"),
 	KG("kg"),
 	GRAMS_100("100g");
 

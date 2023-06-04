@@ -2,7 +2,7 @@ package products;
 
 public enum Category {
 	OTHER("Other"),
-	FRUITS("Fruit"),
+	FRUIT("Fruit"),
 	VEGETABLE("Vegetable"),
 	MEAT("Meat"),
 	DAIRY("Dairy");

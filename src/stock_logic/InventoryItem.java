@@ -15,11 +15,10 @@ public class InventoryItem extends Product {
 	protected String image_url;
 	private int stock;
 	private final int id;
-
 	public static InventoryList fullInv = new InventoryList();
 
 	public InventoryItem() {
-		super("Unknown", Category.OTHER, 0, UnitType.PIECE);
+		super("Unknown", Category.OTHER, 0, UnitType.PCS);
 		this.stock = 0;
 		this.id = -1;
 	}
@@ -31,6 +30,15 @@ public class InventoryItem extends Product {
 	}
 	public InventoryItem(int id, @NotNull Product product) {
 		this(id, product, 0);
+	}
+
+	public static InventoryItem findItemById(int id) {
+		for (InventoryItem item : fullInv) {
+			if (item.getId() == id) {
+				return item;
+			}
+		}
+		return null;
 	}
 
 	public boolean equalsProduct(Product product) {
@@ -56,19 +64,20 @@ public class InventoryItem extends Product {
 				Category cat;
 				UnitType unit;
 				try {
-					cat = Category.valueOf(resultSet.getString("category").toUpperCase());
+					String cString =resultSet.getString("Category").toUpperCase();
+					cat = Category.valueOf(cString);
 				} catch (IllegalArgumentException e) {
 					log("Error: Invalid category! (Defaulting to OTHER)");
 					cat = Category.OTHER;
 				}
 				try {
-					unit = UnitType.valueOf(resultSet.getString("unit_type").toUpperCase());
+					unit = UnitType.valueOf(resultSet.getString("Unittype").toUpperCase());
 				} catch (IllegalArgumentException e) {
-					log("Error: Invalid unit! (Defaulting to PIECE)");
-					unit = UnitType.PIECE;
+					log("Error: Invalid unit for item" +resultSet.getString("Name") + "! (Defaulting to PIECE)");
+					unit = UnitType.PCS;
 				}
-				Product product = new Product(resultSet.getString("name"), cat, resultSet.getFloat("price"), unit);
-				inv.add(new InventoryItem(resultSet.getInt("id"), product, resultSet.getInt("stock")));
+				Product product = new Product(resultSet.getString("Name"), cat, resultSet.getFloat("Price"), unit);
+				inv.add(new InventoryItem(resultSet.getInt("ProductID"), product, resultSet.getInt("Quantity")));
 			}
 			return inv;
 		} catch (Exception e) {

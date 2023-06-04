@@ -28,7 +28,8 @@ public class Main extends Application {
 	public void loadHome() {
 		try {
 			Parent pane = MainView.initLayout();
-			stg.setScene(new javafx.scene.Scene(pane, 900, 600));
+			stg.setScene(new javafx.scene.Scene(pane, 1020, 600));
+			stg.getScene().getStylesheets().add(Objects.requireNonNull(getClass().getResource("../gui/style.css")).toExternalForm());
 			stg.setResizable(true);
 			stg.setTitle("Home");
 		} catch(Exception e) {

@@ -7,7 +7,7 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="var" path="MAVEN_REPOSITORY/org/jetbrains/annotations/24.0.0/annotations-24.0.0.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/mysql.connector.j"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/microsoft.sqlserver.mssql.jdbc"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX20"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/googlecode.json.simple"/>
 	<classpathentry kind="output" path="bin"/>
