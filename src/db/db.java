@@ -20,7 +20,7 @@ public class db {
 
     public static void connect(String url, String username, String password) throws SQLException {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, username, password);
             loggedIn = true;
             log("Logged in successfully as: " + username);
@@ -41,19 +41,19 @@ public class db {
 
     public static String getString(String tableName, String column, int id) throws SQLException {
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(String.format("SELECT %s FROM %s WHERE id = %d", column, tableName, id));
+        ResultSet resultSet = statement.executeQuery(String.format("SELECT %s FROM %s WHERE ProductID = %d", column, tableName, id));
         return resultSet.getString(column);
     }
 
     public static int getInt(String tableName, String column, int id) throws SQLException {
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(String.format("SELECT %s FROM %s WHERE id = %d", column, tableName, id));
+        ResultSet resultSet = statement.executeQuery(String.format("SELECT %s FROM %s WHERE ProductID = %d", column, tableName, id));
         return resultSet.getInt(column);
     }
 
     public static float getFloat(String tableName, String column, int id) throws SQLException {
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(String.format("SELECT %s FROM %s WHERE id = %d", column, tableName, id));
+        ResultSet resultSet = statement.executeQuery(String.format("SELECT %s FROM %s WHERE ProductID = %d", column, tableName, id));
         return resultSet.getFloat(column);
     }
 
@@ -70,7 +70,7 @@ public class db {
     public static void updateOne(String tableName, int id, String col, String newValue) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate(String.format("UPDATE %s SET %s = %s WHERE id = %d", tableName, col, newValue, id));
+            statement.executeUpdate(String.format("UPDATE %s SET %s = %s WHERE ProductID = %d", tableName, col, newValue, id));
         } catch (SQLException e) {
             Logger.getLogger(db.class.getName()).severe(e.toString());
         }
@@ -78,7 +78,7 @@ public class db {
     public static void updateMany(String tableName, int id, String[] cols, String[] newValues) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate(String.format("UPDATE %s SET %s = %s WHERE id = %d", tableName, String.join(", ", cols), String.join(", ", newValues), id));
+            statement.executeUpdate(String.format("UPDATE %s SET %s = %s WHERE ProductID = %d", tableName, String.join(", ", cols), String.join(", ", newValues), id));
         } catch (SQLException e) {
             Logger.getLogger(db.class.getName()).severe(e.toString());
         }

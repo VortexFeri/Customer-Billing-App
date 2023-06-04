@@ -1,0 +1,62 @@
+.myDialog{
+    -fx-background-color: #f2f2f2;
+    -fx-background-radius: 5px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+.myDialog > *.label.content{
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-fill: #292929;
+}
+.myDialog:header *.header-panel{
+    -fx-background-radius: 5px 5px 0px 0px;
+    -fx-background-insets: 0px;
+
+}
+.myDialog:header *.header-panel *.label{
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-fill: #292929;
+}
+.myDialog .button{
+    -fx-background-color: dodgerblue;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-background-radius: 5px;
+    -fx-background-insets: 0px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1);
+    -fx-cursor: hand;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-border-insets: 0px;
+    -fx-height: 30px;
+}
+.myDialog .button:hover{
+    -fx-background-color: deepskyblue;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1);
+}
+.myDialog .button:pressed{
+    -fx-background-color: dodgerblue;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1);
+}
+.myDialog .text-field {
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-background-insets: 0px;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-border-insets: 0px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-text-fill: #292929;
+    -fx-prompt-text-fill: #292929;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1);
+}

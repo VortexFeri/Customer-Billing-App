@@ -3,9 +3,12 @@
 	<contentEntry url="file://$MODULE_DIR$">
 		<excludeFolder url="file://$MODULE_DIR$/bin"/>
 		<excludeFolder url="file://$MODULE_DIR$/bin"/>
+		<excludeFolder url="file://$MODULE_DIR$/bin"/>
+		<excludeFolder url="file://$MODULE_DIR$/bin"/>
+		<excludeFolder url="file://$MODULE_DIR$/bin"/>
 	</contentEntry>
 	<levels>
-		<level name="mysql.connector.j" value="project"/>
+		<level name="microsoft.sqlserver.mssql.jdbc" value="project"/>
 		<level name="googlecode.json.simple" value="project"/>
 	</levels>
 </component>

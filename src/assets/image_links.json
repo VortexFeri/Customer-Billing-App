@@ -1,5 +1,32 @@
 {
-    "carrots": "https://mlcxnwrkbyuq.i.optimole.com/cb:mUzRatt4.lUsqnNZv/w:auto/id:ac8ce0ae8a6917499031f93978c5da91/directUpload/carrots.jpg",
-    "milk": "https://mlcxnwrkbyuq.i.optimole.com/cb:mNWhVK7r.lmok5Lcf/w:auto/id:1f9f2972fb2d8c137b57f8a824ca6d38/directUpload/milk.png",
-    "salmon": "https://mlcxnwrkbyuq.i.optimole.com/cb:mDUQHHUO.lCRHomPJ/w:auto/id:357869e7392e146185053796919b7f40/directUpload/salmon.png"
+    "Carrot": "https://mlcxnwrkbyuq.i.optimole.com/cb:mUzRatt4.lUsqnNZv/w:auto/id:ac8ce0ae8a6917499031f93978c5da91/directUpload/carrots.jpg",
+    "Potato": "https://mlcxnwrkbyuq.i.optimole.com/cb:m2sIytFP.lMsrFCEn/w:auto/id:98ea1447b6e6af1f4b4c701ac40e621f/directUpload/potato.jpeg",
+    "Onion": "https://mlcxnwrkbyuq.i.optimole.com/cb:mLAzhD7J.ly92PVLT/w:auto/id:8358562ce612426d3c15c3e79fb1a32d/directUpload/onion.jpg",
+    "Eggplant": "https://mlcxnwrkbyuq.i.optimole.com/cb:mULsd20o.ly5qLGXN/w:auto/id:0485229a6ece5b2cfc79cd3e6d59fcab/directUpload/eggplant.jpg",
+    "Spring Onion": "https://mlcxnwrkbyuq.i.optimole.com/cb:mq5SydVw.lzrwKXAc/w:auto/id:52b944a7e5b253153b65e67998817464/directUpload/spring_onion.jpg",
+
+    "Watermelon": "https://mlcxnwrkbyuq.i.optimole.com/cb:m695Isg5.lgnXhWnn/w:auto/id:8d803805c98972ba8b607a1a2b5b3e0e/directUpload/watermelon.jpeg",
+    "Honeydew": "https://mlcxnwrkbyuq.i.optimole.com/cb:mH6AJepb.lbCCcEEk/rs:fill:951:900/g:ce/id:e9ca47132b5dfcb766879d3caa0796a4/directUpload/honeydew.jpg",
+    "Strawberries": "https://mlcxnwrkbyuq.i.optimole.com/cb:mSxUM4AT.lMjZW4VP/w:auto/id:0cb3813a1c9f98f3a752cc92c89f265a/directUpload/strawberries.jpg",
+
+    "Salmon": "https://mlcxnwrkbyuq.i.optimole.com/cb:mDUQHHUO.lCRHomPJ/w:auto/id:357869e7392e146185053796919b7f40/directUpload/salmon.png",
+    "Pork": "https://mlcxnwrkbyuq.i.optimole.com/cb:mh8sf9bZ.lvbyEE46/w:auto/id:933cb54aeb92219582131463648188f8/directUpload/pork.jpeg",
+    "Bacon Slices 100g": "https://mlcxnwrkbyuq.i.optimole.com/cb:mE0neFkM.l3bdxsJY/w:auto/id:b1bfed62df77d93b13c304b79b074a62/directUpload/bacon.jpg",
+    "Tuna Can 80g": "https://mlcxnwrkbyuq.i.optimole.com/cb:mLiEMEso.l2cb2DJy/w:auto/id:fee782601ba171191d8c78561c659b4a/directUpload/tuna_can.jpg",
+    "Tuna Can 150g": "https://mlcxnwrkbyuq.i.optimole.com/cb:mLiEMEso.l2cb2DJy/w:auto/id:fee782601ba171191d8c78561c659b4a/directUpload/tuna_can.jpg",
+    "Venison": "https://mlcxnwrkbyuq.i.optimole.com/cb:m8biGjvU.l5kT1Mmh/w:auto/id:3930124f6e0f4c89791e39f12a6e0212/directUpload/venison.jpg",
+
+    "Milk 1L": "https://mlcxnwrkbyuq.i.optimole.com/cb:mNWhVK7r.lmok5Lcf/w:auto/id:1f9f2972fb2d8c137b57f8a824ca6d38/directUpload/milk.png",
+    "Cheddar": "https://mlcxnwrkbyuq.i.optimole.com/cb:mNkKFreo.lrDnAuz7/w:auto/id:768e355030bcb6809bd4549fdae7af45/directUpload/cheddar.jpg",
+    "Parmigiano Regianno 200g": "https://mlcxnwrkbyuq.i.optimole.com/cb:mJaHXhSd.lApm9pRZ/w:auto/id:ceb4cb8984642d6dd03fcf1e39929666/directUpload/Parmigiano-Reggiano.jpg",
+    "Cottage Cheese": "https://mlcxnwrkbyuq.i.optimole.com/cb:mTyB54Mb.llpGD5Ms/w:auto/id:bf6eebaf55da06e64d99b077d7a82adb/directUpload/cottage_cheese.jpg",
+    "Butter 200g": "https://mlcxnwrkbyuq.i.optimole.com/cb:mQ4fqpAW.ltjbSDyC/w:auto/id:beb50956f29d6df01f5243869ccbf16c/directUpload/butter.jpeg",
+
+    "Olive Oil 1L": "https://mlcxnwrkbyuq.i.optimole.com/cb:mPba31Bu.leo5b4TQ/w:auto/id:24313f5694d0636316afcab0e9c216db/directUpload/olive_oil.jpg",
+    "Sunflower Oil 1L": "https://mlcxnwrkbyuq.i.optimole.com/cb:msSXVVEm.l1JLidtK/w:auto/id:3982a07254e6fcfd18710a33c0b35542/directUpload/sunflower_oil.jpg",
+    "Wheat Flour 1Kg": "https://mlcxnwrkbyuq.i.optimole.com/cb:mV7c1ITg.lQrsqqKk/w:auto/id:cbd7ef4e3aad9bbb03837c37dcde5aba/directUpload/what_flour.jpeg",
+    "Rolled Oats 500g": "https://mlcxnwrkbyuq.i.optimole.com/cb:mpfC7mOR.l2RTWJVv/w:auto/id:b8ecf3d7611f61732152491205d57501/directUpload/rolled_oats.jpeg",
+    "Potato Chips with Sour Cream and Onion 90g": "https://mlcxnwrkbyuq.i.optimole.com/cb:m16czjTb.l6UDOdjQ/w:auto/id:cd0e7f9cfcdbf94af6fc7f9035e4ddb1/directUpload/sour_cream_and_onion_chips.jpeg",
+    "Potato Chips with Cheese 90g": "https://mlcxnwrkbyuq.i.optimole.com/cb:mhgjv0Gb.lvR1g4Uu/w:auto/id:e948601dc6d753cffa38936053fa58e8/directUpload/cheese_chips.jpg",
+    "Potato Chips with Salt 90g": "https://mlcxnwrkbyuq.i.optimole.com/cb:mRAQlgxl.lkEt9gqu/w:auto/id:ebb0fc21f9ccd314be1ac753065a993d/directUpload/salt_chips.jpg"
 }

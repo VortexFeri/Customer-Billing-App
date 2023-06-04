@@ -18,11 +18,11 @@ public class Product {
 		this(name, Category.OTHER, price, unit);
 	}
 	public Product(String name, Category category, float price) {
-		this(name, category, price, UnitType.PIECE);
+		this(name, category, price, UnitType.PCS);
 	}
 	
 	public Product(String name, float price) {
-		this(name, Category.OTHER, price, UnitType.PIECE);
+		this(name, Category.OTHER, price, UnitType.PCS);
 	}
 
 	public void print() {
