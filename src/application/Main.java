@@ -1,8 +1,8 @@
 package application;
 
 import gui.MainView;
+import gui.Login;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -16,12 +16,12 @@ public class Main extends Application {
 	}
 
 	@Override
-	public void start(Stage stage) throws Exception  {
+	public void start(Stage stage){
 		stg = stage;
 		stage.setResizable(false);
-		Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../gui/login.fxml")));
+		Parent pane = Login.initLayout();
 		stage.setTitle("Log in");
-		stage.setScene(new Scene(root, 600, 300));
+		stage.setScene(new Scene(pane, 600, 300));
 		stage.show();
 	}
 

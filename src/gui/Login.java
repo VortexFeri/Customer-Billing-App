@@ -1,11 +1,11 @@
 package gui;
 
 import application.Main;
-import javafx.fxml.FXML;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import stock_logic.InventoryItem;
 
 import java.sql.ResultSet;
@@ -17,18 +17,43 @@ import static gui.ProductCard.showProducts;
 import static stock_logic.InventoryItem.fullInv;
 
 public class Login {
-    public Login() {}
+    private static final PasswordField password_field = new PasswordField();
+    private static final TextField username_field = new TextField();
 
-    @FXML
-    private TextField username_field;
-    @FXML
-    private PasswordField password_field;
+    public static Parent initLayout() {
+        StackPane root = new StackPane();
+        GridPane pane = new GridPane();
+        root.getChildren().add(pane);
+        pane.setAlignment(Pos.CENTER);
 
-    public void userLogin() throws SQLException {
+        pane.setHgap(10);
+        pane.setVgap(10);
+        pane.setPrefSize(600, 300);
+        pane.getStylesheets().add(Objects.requireNonNull(Login.class.getResource("style.css")).toExternalForm());
+
+        username_field.setPromptText("Username");
+        username_field.setPrefWidth(200);
+        pane.add(username_field, 1, 1);
+
+        password_field.setPromptText("Password");
+        password_field.setPrefWidth(200);
+        pane.add(password_field, 1, 2);
+
+        // Submit button
+        Button submit = new Button("Log in");
+        submit.setPrefWidth(200);
+        submit.setDefaultButton(true);
+        submit.setOnAction(e -> userLogin());
+        pane.add(submit, 1, 3);
+
+        return root;
+    }
+
+    public static void userLogin() {
         Main m = new Main();
         Dialog<String> dialog = new Dialog<>();
         dialog.getDialogPane().getStylesheets().add(
-                Objects.requireNonNull(getClass().getResource("myDialogs.css")).toExternalForm());
+                Objects.requireNonNull(Login.class.getResource("myDialogs.css")).toExternalForm());
         dialog.getDialogPane().getStyleClass().add("myDialog");
 
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
@@ -38,15 +63,20 @@ public class Login {
                     username_field.getText(),
                     password_field.getText());
         } catch (SQLException e) {
-            e.printStackTrace();
             dialog.setContentText("Error: Access denied. Please check your username and password.");
             dialog.show();
         }
         if (loggedIn) {
-            ResultSet products = getTable("dbo.product");
-            fullInv = InventoryItem.loadFromResultSet(products);
-            m.loadHome();
-            showProducts(fullInv);
+            try {
+                ResultSet products = getTable("dbo.product");
+                fullInv = InventoryItem.loadFromResultSet(products);
+                m.loadHome();
+                showProducts(fullInv);
+            }
+            catch (SQLException e) {
+                dialog.setContentText(e.getMessage());
+                dialog.show();
+            }
         }
     }
 }
